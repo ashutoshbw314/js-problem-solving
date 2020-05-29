@@ -2,19 +2,15 @@
 
 function permutationsRecursive(arr) {
   let permute = r => arr.length == 0 ? [] :
-                     r[0].length == arr.length ? r :
-                     permute(r.map(p => arr.filter(e => !p.includes(e))
-                       .map(e => [...p, e]))
-                     .flat()) 
+                     r[0].length == arr.length ? r : 
+                     permute(r.flatMap(p => arr.filter(e => !p.includes(e)).map(e => [...p, e]))) 
   return permute(arr.map(e => [e]))
 }
 
 function permutationsLoop(arr) {
   let r = arr.map(e => [e])
   for (; r.length && r[0].length != arr.length;  
-       r = r.map(p => arr.filter(e => !p.includes(e))
-             .map(e => [...p, e]))
-           .flat()); 
+       r = r.flatMap(p => arr.filter(e => !p.includes(e)).map(e => [...p, e]))); 
   return r 
 }
 

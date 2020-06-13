@@ -1,3 +1,5 @@
+// https://edabit.com/challenge/b9FBAhxaijR9fzxgo
+
 function distanceToNearestVowel(str) {
   const vowelsRegex = /[aeiou]/;
   const searchForward = i => str.slice(i).search(vowelsRegex);
